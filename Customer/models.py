@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -21,3 +21,34 @@ class Customer(models.Model):
     class Meta:
         db_table = 'customer'
 
+
+class NewsCategory(models.Model):
+    """新闻分类"""
+    
+    category_name = models.CharField(verbose_name="分类名称", null=True, max_length=30)
+    deleted = models.BooleanField(verbose_name='是否删除', default=False)
+    create_time = models.DateTimeField(verbose_name='创建时间', null=True, auto_now_add=True)
+
+    class Meta:
+        db_table = 'news_category'
+
+
+class WebSiteNews(models.Model):
+    """
+    官网新闻
+    """
+    title = models.CharField(verbose_name="新闻标题", null=True, max_length=300)
+    content = models.TextField(verbose_name='内容')
+    category = models.ForeignKey(NewsCategory)
+    sort = models.IntegerField(verbose_name="排序", null=False, default=0)
+    top = models.IntegerField(verbose_name="置顶", null=False, default=0)
+    hits = models.IntegerField(verbose_name='点击量', null=False, default=0)
+    status = models.IntegerField(verbose_name="状态", default=False)
+    cover_image = models.CharField(verbose_name="封面图", max_length=200, null=True)
+    publish_time = models.DateTimeField(verbose_name='发布时间', null=True)
+    deleted = models.BooleanField(verbose_name='是否删除', default=False)
+    create_by = models.ForeignKey(User, null=True)
+    create_time = models.DateTimeField(verbose_name='创建时间', null=True, auto_now_add=True)
+
+    class Meta:
+        db_table = 'website_news'
