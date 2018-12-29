@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block cssstyle %}
+    <style type="text/css">
+        #loginbox{position:absolute;padding:10px;background-color:white;border:10px solid #CCCCCC;background-color:lightgoldenrodyellow;margin-left:40%;margin-top:10%;}
+        #loginbox .title{margin:10px;font-size:16px;color:#333333;font-weight:bold;text-align:center;color:darkmagenta}
+        #loginbox #logintable .fname{padding:5px 10px 5px 0px;font-size:14px;}
+        #loginbox #logintable .fval{font-size:14px;}
+        #loginbox #submitc{text-align:center;padding:10px 0px 5px 0px;;}
+        #loginbox #submit{padding:5px 30px;border-width:0px;}
+    </style>
+{% endblock %}
+
+{% block content %}
+
+<div id="loginbox">
+    <div class="title">登录纳米盒CRM</div>
+
+    <form id="login" name="login" method="POST" action="system/login/">
+        <table id="logintable">
+            <tr><td class="fname">账号</td><td class="fval"><input type="text" id="username" name="username" value="" style="height:20px;width:90%;"/></td></tr>
+            <tr><td class="fname">密码</td><td class="fval"><input autocomplete="off" type="password" id="password" name="password" value="" style="height:20px;width:90%;"/></td></tr>
+        </table>
+        <input hidden="hidden" value="{{ redirect }}" name="redirect">
+        <div style="text-align: center;">
+            {% for m in  messages %}
+                <p style="color: red;font-size: 10px;">{{ m }}</p>
+            {% endfor %}
+        </div>
+        <div id="submitc">
+            <input type="submit" id="submit" name="submit" value="登录"  class="button_nmbox bg-slave">
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script>
+   
+</script>
+{% endblock %}
