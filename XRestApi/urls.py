@@ -21,7 +21,7 @@ from rest_framework_jwt.views import obtain_jwt_token
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # 启用通过POST获取令牌包括用户的用户名和密码。
-    url(r'^api-token-auth/', obtain_jwt_token),
+    # url(r'^api-token-auth/', obtain_jwt_token),
     url(r'^api/v1/', include('Example.api_urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 

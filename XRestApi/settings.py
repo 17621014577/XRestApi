@@ -26,7 +26,7 @@ SECRET_KEY = '*=2c9b4p^v3y*a%*7%4yb5)_o57zrf*ujw#re#+s0y%ui9_a)3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['x.namibox.com']
 
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'XRestApi.settings')
@@ -67,7 +67,7 @@ REST_FRAMEWORK = {
 }
 
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
